@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>CV Compose Hub</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="blueprint-bootstrap.css">
+</head>
+<body>
+  <div class="d-flex flex-column" style="position: fixed; top: 1.5rem; z-index: 1100; gap: 0.5rem;">
+    <button id="theme-toggle" aria-label="Toggle dark/light mode" style="background: var(--color-background); border: 2px solid var(--color-accent); border-radius: 8px; padding: 0.5rem; cursor: pointer; box-shadow: 0 2px 8px var(--color-border);">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10" stroke="var(--color-accent)" stroke-width="2"/>
+        <path d="M12 6v6l4 2" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <button id="toggleChatbot" aria-label="Abrir chat" style="background: var(--color-background); border: 2px solid var(--color-accent); border-radius: 8px; padding: 0.5rem; cursor: pointer; box-shadow: 0 2px 8px var(--color-border);">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <rect x="3" y="5" width="18" height="14" rx="4" stroke="var(--color-accent)" stroke-width="2"/>
+        <path d="M8 13h8M8 9h8" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="7" cy="17" r="2" stroke="var(--color-accent)" stroke-width="2"/>
+      </svg>
+    </button>
+  </div>
+  <div class="chatbot-floating" id="chatbotWindow" style="top: 7rem; bottom: auto;">
+    <div class="card mb-0" style="max-width: 400px; margin: 0 auto;">
+      <div class="card-header">Chatbot (placeholder)</div>
+      <div class="card-body">
+        <div class="border rounded p-3" style="background: var(--color-code-background); min-height: 200px; color: var(--color-text-secondary);">
+          <div class="mb-2">Chatbot no conectado. Aquí aparecerán los mensajes.</div>
+          <div class="d-flex">
+            <input type="text" class="form-control me-2" placeholder="Escribe tu mensaje..." disabled>
+            <button class="btn btn-secondary" disabled>Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container py-4">
+    <h1 class="mb-4" style="text-align: center;">CV Compose Hub</h1>
+    <p>Usuario logeado: <b>__USUARIO_LOGEADO__</b></p>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-header">Servicios del Proyecto</div>
+          <div class="card-body">
+            <ul class="list-unstyled mb-0">
+              <li><b>Portal Web</b>: Interfaz principal y acceso a tu CV.</li>
+              <li><b>Python API</b>: Backend para datos y proyectos.</li>
+              <li><b>Node API</b>: Servicios adicionales y endpoints.</li>
+              <li><b>Traefik</b>: Proxy inverso y gestión de rutas.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-header">Documentación y Ayuda</div>
+          <div class="card-body">
+            <ul class="mb-0">
+              <li><a href="README.md" target="_blank">Guía del Proyecto</a></li>
+              <li><a href="TODO.md" target="_blank">Tareas Pendientes</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <div class="card-header">Mi CV</div>
+          <div class="card-body">
+            <div class="accordion" id="cvAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingDatos">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDatos" aria-expanded="false" aria-controls="collapseDatos">
+                    Datos Personales
+                  </button>
+                </h2>
+                <div id="collapseDatos" class="accordion-collapse collapse" aria-labelledby="headingDatos" data-bs-parent="#cvAccordion">
+                  <div class="accordion-body">
+                    <ul class="list-unstyled">
+                      <li><b>Nombre:</b> David Gómez Calles</li>
+                      <li><b>Dirección:</b> Madrid, España</li>
+                      <li><b>Email:</b> davidgcalles91@gmail.com</li>
+                      <li><b>Teléfono:</b> (34) 651 398 798</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingExp">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExp" aria-expanded="true" aria-controls="collapseExp">
+                    Experiencia Profesional
+                  </button>
+                </h2>
+                <div id="collapseExp" class="accordion-collapse collapse show" aria-labelledby="headingExp" data-bs-parent="#cvAccordion">
+                  <div class="accordion-body">
+                    <div class="timeline">
+
+                      <div class="timeline-item">
+                        <a tabindex="0" class="timeline-dot-trigger" role="button" 
+                          data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-html="true" 
+                          title="Backend Developer" 
+                          data-bs-content="<b>Empresa:</b> BBVA Talento y Cultura<br><b>Periodo:</b> 03/2025 - Presente<br><b>Descripción:</b> Creación y mantenimiento de diversas herramientas.">
+                        </a>
+                        <div class="timeline-label">
+                          Backend Developer
+                        </div>
+                      </div>
+    
+                      <div class="timeline-item">
+                        <a tabindex="0" class="timeline-dot-trigger" role="button"
+                          data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-html="true" 
+                          title="Full Stack Developer" 
+                          data-bs-content="<b>Empresa:</b> BBVA Purchasing Execution<br><b>Periodo:</b> 06/2021 - 04/2024<br><b>Descripción:</b> Lead Developer para proyecto interno internacional.">
+                        </a>
+                        <div class="timeline-label">
+                          Full Stack Developer
+                        </div>
+                      </div>
+    
+                      <div class="timeline-item">
+                        <a tabindex="0" class="timeline-dot-trigger" role="button"
+                          data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-html="true" 
+                          title="Backend Developer" 
+                          data-bs-content="<b>Empresa:</b> INDRA<br><b>Periodo:</b> 12/2019 – 04/2021<br><b>Descripción:</b> Desarrollo de microservicios en Docker Swarm.">
+                        </a>
+                        <div class="timeline-label">
+                          Backend Developer
+                        </div>
+                      </div>
+    
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingEdu">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEdu" aria-expanded="false" aria-controls="collapseEdu">
+                    Educación
+                  </button>
+                </h2>
+                <div id="collapseEdu" class="accordion-collapse collapse" aria-labelledby="headingEdu" data-bs-parent="#cvAccordion">
+                  <div class="accordion-body">
+                    <ul>
+                      <li><b>Título:</b> Técnico Superior en Desarrollo de Aplicaciones Web <br>
+                          <b>Institución:</b> UCJC Madrid <br>
+                          <b>Periodo:</b> 2014 - 2016 <br>
+                          <b>Descripción:</b> Formación centrada en frontend y programación.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingProy">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProy" aria-expanded="false" aria-controls="collapseProy">
+                    Proyectos
+                  </button>
+                </h2>
+                <div id="collapseProy" class="accordion-collapse collapse" aria-labelledby="headingProy" data-bs-parent="#cvAccordion">
+                  <div class="accordion-body">
+                    <p>Ver sección "Proyectos Destacados" más abajo.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingHab">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHab" aria-expanded="false" aria-controls="collapseHab">
+                    Habilidades Técnicas
+                  </button>
+                </h2>
+                <div id="collapseHab" class="accordion-collapse collapse" aria-labelledby="headingHab" data-bs-parent="#cvAccordion">
+                  <div class="accordion-body">
+                    <ul class="list-unstyled">
+                      <li><b>Lenguajes:</b> Python, Javascript, SQL, PHP, Java (básico)</li>
+                      <li><b>Frameworks y Librerías:</b> Flask, Django, Vue, Angular, Pandas/numpy</li>
+                      <li><b>Herramientas y Tecnologías:</b> Google Cloud (GCP), Google Workspace, Docker, Kubernetes, Microservicios, Apache, Nginx</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingCert">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCert" aria-expanded="false" aria-controls="collapseCert">
+                    Certificaciones
+                  </button>
+                </h2>
+                <div id="collapseCert" class="accordion-collapse collapse" aria-labelledby="headingCert" data-bs-parent="#cvAccordion">
+                  <div class="accordion-body">
+                    <ul>
+                      <li><b>Certificación:</b> GCP Associate (En curso) <br>
+                          <b>Institución:</b> Google Cloud <br>
+                          <b>Fecha:</b> 2023 - Actualidad
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingIdiomas">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIdiomas" aria-expanded="false" aria-controls="collapseIdiomas">
+                    Idiomas
+                  </button>
+                </h2>
+                <div id="collapseIdiomas" class="accordion-collapse collapse" aria-labelledby="headingIdiomas" data-bs-parent="#cvAccordion">
+                  <div class="accordion-body">
+                    <ul>
+                      <li><b>Idioma:</b> Inglés <br>
+                          <b>Nivel:</b> Bilingüe / C1
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card mb-3">
+          <div class="card-header">Proyectos Destacados</div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 col-lg-6 mb-3">
+                <div class="card">
+                  <div class="card-header">Acortador de URLs</div>
+                  <div class="card-body">
+                    <p>Servicio para crear URLs cortas y mostrar estadísticas. Demuestra diseño de APIs RESTful, operaciones CRUD, lógica de negocio y generación de códigos únicos.</p>
+                    <a href="#" target="_blank">Ver documentación</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-6 mb-3">
+                <div class="card">
+                  <div class="card-header">Dashboard de Métricas del Entorno</div>
+                  <div class="card-body">
+                    <p>Servicio Python Flask para exponer métricas del sistema (CPU, RAM, etc.), con endpoints de health check y métricas.</p>
+                    <a href="#" target="_blank">Ver documentación</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-6 mb-3">
+                <div class="card">
+                  <div class="card-header">Proxy Inteligente de APIs Públicas</div>
+                  <div class="card-body">
+                    <p>Servicio que actúa como proxy a APIs públicas, con gestión segura de claves y métricas de uso.</p>
+                    <a href="#" target="_blank">Ver documentación</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-6 mb-3">
+                <div class="card">
+                  <div class="card-header">Simulador de Procesamiento Asíncrono</div>
+                  <div class="card-body">
+                    <p>Servicio para encolar y procesar tareas en segundo plano, exponiendo métricas de estado y rendimiento.</p>
+                    <a href="#" target="_blank">Ver documentación</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="theme.js"></script>
+  <script>
+    // Chatbot window toggle logic
+    const chatbotWindow = document.getElementById('chatbotWindow');
+    const toggleChatbot = document.getElementById('toggleChatbot');
+    let chatbotVisible = false;
+    toggleChatbot.addEventListener('click', function() {
+      chatbotVisible = !chatbotVisible;
+      chatbotWindow.style.display = chatbotVisible ? 'block' : 'none';
+    });
+    // Start hidden
+    chatbotWindow.style.display = 'none';
+
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+  </script>
+</body>
+</html>

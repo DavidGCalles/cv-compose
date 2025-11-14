@@ -1,0 +1,47 @@
+services:
+  traefik:
+    image: traefik:v2.10
+    container_name: traefik
+    command:
+      - --api.insecure=true
+      - --providers.docker=true
+      - --entrypoints.web.address=:80
+    ports:
+      - "80:80"
+      - "8081:8080" # Traefik dashboard
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik/traefik.yml:/etc/traefik/traefik.yml
+      - ./traefik/dynamic.yml:/etc/traefik/dynamic.yml
+      - ./traefik/.htpasswd:/etc/traefik/.htpasswd
+    restart: unless-stopped
+
+  python-api:
+    build: ./python-api
+    container_name: python-api
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+
+  node-api:
+    build: ./node-api
+    container_name: node-api
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  portal-web:
+    image: nginx:alpine
+    container_name: portal-web
+    labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.portal.rule=Host(`localhost`)"
+        - "traefik.http.routers.portal.entrypoints=web"
+        - "traefik.http.services.portal.loadbalancer.server.port=80"
+        - "traefik.http.routers.portal.middlewares=portal-auth@file"
+    volumes:
+      - ./portal-web/index.html:/usr/share/nginx/html/index.html
+      - ./portal-web/theme.js:/usr/share/nginx/html/theme.js
+      - ./portal-web/blueprint-bootstrap.css:/usr/share/nginx/html/blueprint-bootstrap.css
+      - ./portal-web/default.conf:/etc/nginx/conf.d/default.conf
+    restart: unless-stopped

@@ -1,0 +1,172 @@
+/* Blueprint + Bootstrap customizations */
+:root {
+    --color-background: #0F172A;
+    --color-text-primary: #E5E7EB;
+    --color-text-secondary: #94A3B8; /* Corrected for dark mode contrast */
+    --color-accent: #38BDF8;
+    --color-border: #334155;
+    --color-code-background: #1E2B3A; /* Corrected for dark mode contrast */
+
+    /* --- Popover Theming --- */
+    --bs-popover-bg: var(--color-code-background);
+    --bs-popover-border-color: var(--color-border);
+    --bs-popover-header-bg: var(--color-background);
+    --bs-popover-header-color: var(--color-accent);
+    --bs-popover-body-color: var(--color-text-primary);
+    --bs-popover-arrow-border: var(--color-border);
+}
+.light-mode {
+    --color-background: #F8FAFC;
+    --color-text-primary: #0F172A;
+    --color-text-secondary: #475569;
+    --color-accent: #0284C7;
+    --color-border: #CBD5E1;
+    --color-code-background: #E2E8F0;
+
+    /* --- Popover Theming --- */
+    --bs-popover-bg: var(--color-background);
+    --bs-popover-border-color: var(--color-border);
+    --bs-popover-header-bg: #f0f0f0;
+    --bs-popover-header-color: var(--color-text-primary);
+    --bs-popover-body-color: var(--color-text-primary);
+    --bs-popover-arrow-border: var(--color-border);
+}
+body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Consolas', 'Courier New', monospace;
+    min-height: 100vh;
+    margin: 0;
+    box-sizing: border-box;
+}
+h1, h2 {
+    color: var(--color-accent);
+    letter-spacing: 2px;
+    border-bottom: 2px dashed var(--color-border);
+    padding-bottom: 0.3em;
+}
+a {
+    color: var(--color-accent);
+    text-decoration: underline dashed;
+}
+pre {
+    background-color: var(--color-code-background);
+    border: 1px solid var(--color-border);
+    padding: 1em;
+    border-radius: 8px;
+    color: var(--color-text-secondary);
+    font-size: 1em;
+    margin: 1em 0;
+}
+.card {
+    background: var(--color-code-background);
+    border: 2px dashed var(--color-border);
+    border-radius: 12px;
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px var(--color-border);
+}
+.card-header {
+    background: var(--color-background);
+    color: var(--color-accent);
+    font-weight: bold;
+    border-bottom: 1px dashed var(--color-border);
+}
+.collapse {
+    background: var(--color-code-background);
+    border-top: 1px dashed var(--color-border);
+}
+body.light-mode .card {
+    background: var(--color-code-background);
+    border-color: var(--color-border);
+}
+body.light-mode .card-header {
+    background: var(--color-background);
+    color: var(--color-accent);
+}
+body.light-mode .collapse {
+    background: var(--color-background);
+    border-top: 1px dashed var(--color-border);
+}
+#theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: var(--color-background);
+    border: 2px solid var(--color-accent);
+    border-radius: 8px;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+    z-index: 100;
+    box-shadow: 0 2px 8px var(--color-border);
+}
+#theme-toggle svg {
+    display: block;
+}
+
+.collapse {
+    background: var(--color-background);
+    border-top: 1px dashed var(--color-border);
+}
+
+body.light-mode .collapse {
+    background: var(--color-background);
+    border-top: 1px dashed var(--color-border);
+}
+
+
+/* --- Estilos para el Timeline Interactivo --- */
+.timeline {
+  position: relative;
+  margin: 0;
+  list-style: none;
+  /* Eliminamos el padding-left para controlar el espacio desde el item */
+  padding-left: 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 11px; /* Posicionamos la línea en el centro del punto */
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--color-border);
+}
+.timeline-item {
+  position: relative;
+  min-height: 60px;
+  /* AÑADIDO: Espacio a la izquierda para el punto y el texto */
+  padding-left: 4rem; 
+}
+
+.timeline-dot-trigger {
+  position: absolute;
+  /* AÑADIDO: Movemos el punto a su posición en la línea */
+  left: 0;
+  top: 0.25rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--color-background);
+  border: 2px solid var(--color-accent);
+  z-index: 1;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.timeline-dot-trigger:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(13, 110, 253, 0.5);
+}
+
+/* NUEVO: Estilo para la etiqueta del puesto */
+.timeline-label {
+  /* Se posiciona de forma natural gracias al padding del item */
+  padding-top: 0.2rem; /* Alineación vertical fina con el punto */
+  font-weight: 500; /* Le damos un poco más de peso a la fuente */
+}
+
+.accordion-body {
+    color: var(--color-text-secondary);
+}
