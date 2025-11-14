@@ -26,8 +26,13 @@ services:
   node-api:
     build: ./node-api
     container_name: node-api
-    ports:
-      - "3000:3000"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.node-api.rule=PathPrefix(`/node-api`)"
+      - "traefik.http.routers.node-api.entrypoints=web"
+      - "traefik.http.services.node-api.loadbalancer.server.port=3000"
+      - "traefik.http.middlewares.strip-node-api-prefix.stripprefix.prefixes=/node-api"
+      - "traefik.http.routers.node-api.middlewares=portal-auth@file,strip-node-api-prefix"
     restart: unless-stopped
 
   portal-web:
